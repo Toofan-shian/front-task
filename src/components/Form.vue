@@ -84,6 +84,12 @@ export default {
         bankAccountNumber: '',
       },
     }
+  },
+  methods: {
+    validateEmail(email) {
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailPattern.test(email);
+    },
   }
 }
 </script>
