@@ -3,10 +3,12 @@ import Form from '@/components/Form'
 
 describe("Form.vue", () => {
 
+
   it('renders the form', () => {
     let wrapper = mount(Form)
     expect(wrapper.find('#form').exists()).toBe(true)
   })
+
 
   it('renders form inputs', () => {
     const wrapper = mount(Form);
@@ -19,7 +21,7 @@ describe("Form.vue", () => {
   })
 
 
-  it('validates email correctly', async () => {
+  it('validates email', async () => {
     const wrapper = mount(Form);
     const emailInput = wrapper.find('#email');
     
@@ -29,5 +31,16 @@ describe("Form.vue", () => {
     await emailInput.setValue('correct@example.com');
     expect(wrapper.vm.validateEmail('correct@example.com')).toBe(true);
   })
-  
+
+
+  it('validates bank account number', async () => {
+    const wrapper = mount(Form);
+    const bankAccountInput = wrapper.find('#bankAccount');
+    
+    await bankAccountInput.setValue('wrong');
+    expect(wrapper.vm.validateBankAccount('wrong')).toBe(false);
+    
+    await bankAccountInput.setValue('123456789999');
+    expect(wrapper.vm.validateBankAccount('123456789999')).toBe(true);
+  });
 })
