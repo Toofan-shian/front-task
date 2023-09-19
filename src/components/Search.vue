@@ -12,7 +12,7 @@
     />
 
     <!-- search results here -->
-    <ul class="search-results">
+    <ul class="search-results" v-if="searchQuery.trim() != ''">
       <li v-for="customer in searchResults" :key="customer.id" class="search-item">
         {{ customer.firstName }} {{ customer.lastName }}
       </li>
