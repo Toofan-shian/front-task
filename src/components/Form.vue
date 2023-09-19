@@ -130,6 +130,7 @@ export default {
     submitForm() {
       if (this.validateFormData()) {
         this.storeCustomerData();
+        this.clearForm()
       }
     },
     validateFormData() {
@@ -141,6 +142,14 @@ export default {
         return true;
       }
       return false
+    },
+    clearForm() {
+      this.formData.firstName = '';
+      this.formData.lastName = '';
+      this.formData.dateOfBirth = '';
+      this.formData.phoneNumber = '';
+      this.formData.email = '';
+      this.formData.bankAccountNumber = '';
     },
   }
 }

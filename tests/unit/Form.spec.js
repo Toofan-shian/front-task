@@ -11,7 +11,7 @@ describe("Form.vue", () => {
 
 
 
-  it('renders form inputs', () => {
+  it('renders all the form inputs', () => {
     const wrapper = mount(Form);
     expect(wrapper.find('#firstName').exists()).toBe(true);
     expect(wrapper.find('#lastName').exists()).toBe(true);
