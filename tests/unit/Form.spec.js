@@ -89,5 +89,33 @@ describe("Form.vue", () => {
   })
 
 
+  it('does not store duplicate customer data in local storage', async () => {
+    const wrapper = mount(Form);
+
+    const formData = {
+      firstName: 'John',
+      lastName: 'Doe',
+      dateOfBirth: '1990-01-01',
+      phoneNumber: '+989901618642',
+      email: 'john@example.com',
+      bankAccountNumber: '123456789012',
+    };
+
+    await wrapper.setData({ formData });
+
+    await wrapper.find('form').trigger('submit.prevent');
+
+    await wrapper.vm.$nextTick();
+
+    const storedData = JSON.parse(localStorage.getItem('customerData'))
+    expect(storedData).toContainEqual(formData);
+
+    await wrapper.find('form').trigger('submit.prevent')
+    await wrapper.vm.$nextTick();
+
+    const storedDataAfterDuplicateSubmission = JSON.parse(localStorage.getItem('customerData'))
+    expect(storedDataAfterDuplicateSubmission).toEqual([formData]);
+  });
+
 
 })

@@ -125,9 +125,22 @@ export default {
       }
 
       existingData.push(this.formData);
-
-      // Store the updated customer data in local storage
       localStorage.setItem('customerData', JSON.stringify(existingData));
+    },
+    submitForm() {
+      if (this.validateFormData()) {
+        this.storeCustomerData();
+      }
+    },
+    validateFormData() {
+      if (
+        this.validateEmail(this.formData.email) &&
+        this.validateBankAccount(this.formData.bankAccountNumber) &&
+        this.validatePhoneNumber(this.formData.phoneNumber)
+      ) {
+        return true;
+      }
+      return false
     },
   }
 }
