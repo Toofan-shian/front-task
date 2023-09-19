@@ -72,9 +72,12 @@
 </template>
 
 <script >
+import { PhoneNumberUtil } from 'google-libphonenumber';
+
 export default {
   data() {
     return {
+      phoneNumberUtil: new PhoneNumberUtil(),
       formData: {
         firstName: '',
         lastName: '',
@@ -93,6 +96,16 @@ export default {
     validateBankAccount(accountNumber) {
       const bankAccountPattern = /^[0-9]{12}$/;
       return bankAccountPattern.test(accountNumber);
+    },
+    validatePhoneNumber(phoneNumber) {
+
+      try {
+        const parsedPhoneNumber = this.phoneNumberUtil.parse(phoneNumber, 'IR');
+        return this.phoneNumberUtil.isValidNumber(parsedPhoneNumber);
+      } catch (error) {
+        console.log(error)
+        return false;
+      }
     },
   }
 }

@@ -49,7 +49,7 @@ describe("Form.vue", () => {
 
 
 
-  it('validates phone number correctly', async () => {
+  it('validates phone number', async () => {
     const wrapper = mount(Form);
     const phoneInput = wrapper.find('#phoneNumber');
     
