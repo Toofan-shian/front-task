@@ -10,6 +10,7 @@ describe("Form.vue", () => {
   })
 
 
+
   it('renders form inputs', () => {
     const wrapper = mount(Form);
     expect(wrapper.find('#firstName').exists()).toBe(true);
@@ -19,6 +20,7 @@ describe("Form.vue", () => {
     expect(wrapper.find('#email').exists()).toBe(true);
     expect(wrapper.find('#bankAccount').exists()).toBe(true);
   })
+
 
 
   it('validates email', async () => {
@@ -31,6 +33,7 @@ describe("Form.vue", () => {
     await emailInput.setValue('correct@example.com');
     expect(wrapper.vm.validateEmail('correct@example.com')).toBe(true);
   })
+ 
 
 
   it('validates bank account number', async () => {
@@ -42,5 +45,19 @@ describe("Form.vue", () => {
     
     await bankAccountInput.setValue('123456789999');
     expect(wrapper.vm.validateBankAccount('123456789999')).toBe(true);
+  })
+
+
+
+  it('validates phone number correctly', async () => {
+    const wrapper = mount(Form);
+    const phoneInput = wrapper.find('#phoneNumber');
+    
+    // await phoneInput.setValue('12345');
+    expect(wrapper.vm.validatePhoneNumber('12345')).toBe(false);
+    
+
+    // await phoneInput.setValue('+989901619642');
+    expect(wrapper.vm.validatePhoneNumber('+989901619642')).toBe(true);
   });
 })
