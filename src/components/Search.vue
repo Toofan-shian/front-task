@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h3>Search Customers</h3>
+  <h3>Search Customers</h3>
+  <div class="search">
     <!-- Search input field -->
     <input
       id="search-field"
@@ -47,5 +47,35 @@ export default {
 </script>
 
 <style scoped>
+h3 {
+  margin-top: 30px;
+}
+.search {
+  max-width: 300px;
+  margin: 0 auto; 
+  padding: 20px; 
+}
 
+.search-input {
+  width: 100%; 
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-results {
+  list-style-type: none;
+  padding: 0; 
+  margin-top: 10px; 
+}
+
+.search-item {
+  padding: 5px 0;
+  border-bottom: 1px solid #ccc; 
+}
+
+
+.search-item:last-child {
+  border-bottom: none;
+}
 </style>

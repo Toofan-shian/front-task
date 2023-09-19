@@ -144,5 +144,15 @@ describe("Form.vue", () => {
     expect(wrapper.vm.formData.bankAccountNumber).toBe('');
   });
 
+  it('changes the color of the phone number hint', async () => {
+    let wrapper = mount(Form)
+
+    await wrapper.get('#phoneNumber').setValue('123')
+    expect(wrapper.get('#phoneNumberHint').classes()).toContain('red-text')
+
+    await wrapper.get('#phoneNumber').setValue('+988891618276')
+    expect(wrapper.get('#phoneNumberHint').classes()).toContain('green-text')
+
+  })
 
 })

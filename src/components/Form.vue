@@ -162,7 +162,7 @@ export default {
 
 <style scoped>
 .my-form {
-  max-width: 400px;
+  max-width: 440px;
   margin: 0 auto; 
   padding: 20px;
   background-color: #f9f9f9; 
@@ -182,7 +182,7 @@ input[type="text"],
 input[type="date"],
 input[type="tel"],
 input[type="email"] {
-  width: 100%;
+  width: 90%;
   padding: 10px; 
   border: 1px solid #ccc; 
   border-radius: 4px; 
