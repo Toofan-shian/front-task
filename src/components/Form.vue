@@ -1,7 +1,7 @@
 <template>
   <h3>Add Customer</h3>
 
-  <div>
+  <div class="my-form">
     <form @submit.prevent="submitForm" id="form">
       <div class="form-group">
         <label for="firstName">First Name:</label>
@@ -155,6 +155,54 @@ export default {
 }
 </script>
 
-<style scoped>
 
+
+
+
+
+<style scoped>
+.my-form {
+  max-width: 400px;
+  margin: 0 auto; 
+  padding: 20px;
+  background-color: #f9f9f9; 
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="tel"],
+input[type="email"] {
+  width: 100%;
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+}
+
+small {
+  color: #888; 
+  display: block; 
+}
+
+.submit-button {
+  background-color: #007bff;
+  color: #fff; 
+  padding: 10px 20px;
+  border: none; 
+  border-radius: 4px; 
+  cursor: pointer; 
+}
+
+.submit-button:hover {
+  background-color: #0056b3; 
+}
 </style>
