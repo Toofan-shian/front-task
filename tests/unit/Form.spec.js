@@ -16,5 +16,18 @@ describe("Form.vue", () => {
     expect(wrapper.find('#phoneNumber').exists()).toBe(true);
     expect(wrapper.find('#email').exists()).toBe(true);
     expect(wrapper.find('#bankAccount').exists()).toBe(true);
-  });
+  })
+
+
+  it('validates email correctly', async () => {
+    const wrapper = mount(Form);
+    const emailInput = wrapper.find('#email');
+    
+    await emailInput.setValue('wrong');
+    expect(wrapper.vm.validateEmail('wrong')).toBe(false);
+    
+    await emailInput.setValue('correct@example.com');
+    expect(wrapper.vm.validateEmail('correct@example.com')).toBe(true);
+  })
+  
 })
