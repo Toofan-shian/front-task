@@ -55,7 +55,6 @@ describe("Form.vue", () => {
     
     // await phoneInput.setValue('12345');
     expect(wrapper.vm.validatePhoneNumber('12345')).toBe(false);
-    
 
     // await phoneInput.setValue('+989901619642');
     expect(wrapper.vm.validatePhoneNumber('+989901619642')).toBe(true);
@@ -64,7 +63,6 @@ describe("Form.vue", () => {
 
   it('stores customer in local storage on form submission', async () => {
     const wrapper = mount(Form);
-
     await wrapper.setData({
       formData: {
         firstName: 'John',
@@ -76,7 +74,6 @@ describe("Form.vue", () => {
       },
     })
     await wrapper.find('form').trigger('submit.prevent');
-
     await wrapper.vm.$nextTick();
 
     const storedData = JSON.parse(localStorage.getItem('customerData'));
@@ -89,6 +86,8 @@ describe("Form.vue", () => {
       email: 'john@example.com',
       bankAccountNumber: '123456789012',
     })
-
   })
+
+
+
 })

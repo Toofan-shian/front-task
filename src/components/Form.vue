@@ -107,6 +107,28 @@ export default {
         return false;
       }
     },
+    storeCustomerData() {
+      // existing customers
+      const existingData = JSON.parse(localStorage.getItem('customerData')) || [];
+
+      // check for uniqueness
+      const isDuplicate = existingData.some((customer) => {
+        return (
+          customer.firstName === this.formData.firstName &&
+          customer.lastName === this.formData.lastName &&
+          customer.dateOfBirth === this.formData.dateOfBirth
+        );
+      });
+
+      if (isDuplicate) {
+        return;
+      }
+
+      existingData.push(this.formData);
+
+      // Store the updated customer data in local storage
+      localStorage.setItem('customerData', JSON.stringify(existingData));
+    },
   }
 }
 </script>
