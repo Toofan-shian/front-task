@@ -115,6 +115,33 @@ describe("Form.vue", () => {
 
     const storedDataAfterDuplicateSubmission = JSON.parse(localStorage.getItem('customerData'))
     expect(storedDataAfterDuplicateSubmission).toEqual([formData]);
+  })
+
+
+
+  it('clears the form after submission', async () => {
+    const wrapper = mount(Form);
+    
+    await wrapper.setData({
+      formData: {
+        firstName: 'John',
+        lastName: 'Doe',
+        dateOfBirth: '1990-01-01',
+        phoneNumber: '+989901618642',
+        email: 'john@example.com',
+        bankAccountNumber: '123456789012',
+      },
+    })
+    
+    await wrapper.find('form').trigger('submit.prevent');
+    
+    // Check if the form fields are cleared
+    expect(wrapper.vm.formData.firstName).toBe('');
+    expect(wrapper.vm.formData.lastName).toBe('');
+    expect(wrapper.vm.formData.dateOfBirth).toBe('');
+    expect(wrapper.vm.formData.phoneNumber).toBe('');
+    expect(wrapper.vm.formData.email).toBe('');
+    expect(wrapper.vm.formData.bankAccountNumber).toBe('');
   });
 
 
