@@ -59,5 +59,36 @@ describe("Form.vue", () => {
 
     // await phoneInput.setValue('+989901619642');
     expect(wrapper.vm.validatePhoneNumber('+989901619642')).toBe(true);
-  });
+  })
+
+
+  it('stores customer in local storage on form submission', async () => {
+    const wrapper = mount(Form);
+
+    await wrapper.setData({
+      formData: {
+        firstName: 'John',
+        lastName: 'Doe',
+        dateOfBirth: '1990-01-01',
+        phoneNumber: '+989901618642',
+        email: 'john@example.com',
+        bankAccountNumber: '123456789012',
+      },
+    })
+    await wrapper.find('form').trigger('submit.prevent');
+
+    await wrapper.vm.$nextTick();
+
+    const storedData = JSON.parse(localStorage.getItem('customerData'));
+    
+    expect(storedData).toContainEqual({
+      firstName: 'John',
+      lastName: 'Doe',
+      dateOfBirth: '1990-01-01',
+      phoneNumber: '+989901618642',
+      email: 'john@example.com',
+      bankAccountNumber: '123456789012',
+    })
+
+  })
 })
