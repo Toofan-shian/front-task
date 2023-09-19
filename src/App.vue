@@ -1,12 +1,19 @@
 <template>
-
+  <div>
+    <Form></Form>
+    <Search></Search>
+  </div>
 </template>
 
 <script>
+import Form from './components/Form.vue';
+import Search from './components/Search.vue'
 
 export default {
   name: 'App',
   components: {
+    Form,
+    Search
   }
 }
 </script>
