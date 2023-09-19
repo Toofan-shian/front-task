@@ -90,6 +90,10 @@ export default {
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return emailPattern.test(email);
     },
+    validateBankAccount(accountNumber) {
+      const bankAccountPattern = /^[0-9]{12}$/;
+      return bankAccountPattern.test(accountNumber);
+    },
   }
 }
 </script>
