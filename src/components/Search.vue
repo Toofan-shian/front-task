@@ -7,6 +7,7 @@
       v-model="searchQuery"
       placeholder="Search by name"
       type="text"
+      @input="searchCustomers"
       class="search-input"
     />
 
@@ -28,8 +29,19 @@ export default {
     };
   },
   methods: {
+    searchCustomers() {
+
+      const customerData = JSON.parse(localStorage.getItem('customerData')) || [];
 
 
+      // Filter customers based on the search query (case-insensitive)
+      this.searchResults = customerData.filter((customer) => {
+
+        const fullName = `${customer.firstName} ${customer.lastName}`;
+        return fullName.toLowerCase().includes(this.searchQuery.toLowerCase());
+      });
+
+    },
   },
 };
 </script>
