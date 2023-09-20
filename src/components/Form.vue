@@ -40,8 +40,9 @@
           id="phoneNumber"
           v-model="formData.phoneNumber"
           required
+          @click="phoneInputIsInteracted = true"
         />
-        <small>Example: +989901619642</small>
+        <small id="phoneNumberHint" :class="phoneInputHintColor">Example: +989901619642</small>
       </div>
 
       <div class="form-group">
@@ -78,6 +79,7 @@ export default {
   data() {
     return {
       phoneNumberUtil: new PhoneNumberUtil(),
+      phoneInputIsInteracted: false,
       formData: {
         firstName: '',
         lastName: '',
@@ -151,6 +153,14 @@ export default {
       this.formData.email = '';
       this.formData.bankAccountNumber = '';
     },
+  },
+  computed: {
+    phoneInputHintColor() {
+      if (!this.phoneInputIsInteracted) {
+        return
+      }
+      return this.validatePhoneNumber(this.formData.phoneNumber) ? 'green-text' : 'red-text'
+    }
   }
 }
 </script>
@@ -204,5 +214,12 @@ small {
 
 .submit-button:hover {
   background-color: #0056b3; 
+}
+
+.red-text {
+  color: red;
+}
+.green-text {
+  color: green;
 }
 </style>

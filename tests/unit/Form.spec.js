@@ -146,13 +146,23 @@ describe("Form.vue", () => {
 
   it('changes the color of the phone number hint', async () => {
     let wrapper = mount(Form)
-
-    await wrapper.get('#phoneNumber').setValue('123')
-    expect(wrapper.get('#phoneNumberHint').classes()).toContain('red-text')
-
-    await wrapper.get('#phoneNumber').setValue('+988891618276')
-    expect(wrapper.get('#phoneNumberHint').classes()).toContain('green-text')
-
-  })
+  
+    const phoneNumberInput = wrapper.get('#phoneNumber');
+    const phoneNumberHint = wrapper.get('#phoneNumberHint');
+  
+    await phoneNumberInput.trigger('click');
+  
+    await phoneNumberInput.setValue('123');
+  
+    await wrapper.vm.$nextTick();
+  
+    expect(phoneNumberHint.classes()).toContain('red-text');
+  
+    await phoneNumberInput.setValue('+989901619642');
+  
+    await wrapper.vm.$nextTick();
+  
+    expect(phoneNumberHint.classes()).toContain('green-text');
+  });
 
 })
