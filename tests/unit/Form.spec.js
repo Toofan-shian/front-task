@@ -150,7 +150,7 @@ describe("Form.vue", () => {
     const phoneNumberInput = wrapper.get('#phoneNumber');
     const phoneNumberHint = wrapper.get('#phoneNumberHint');
   
-    await phoneNumberInput.trigger('click');
+    await phoneNumberInput.trigger('focus');
   
     await phoneNumberInput.setValue('123');
   

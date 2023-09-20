@@ -40,7 +40,7 @@
           id="phoneNumber"
           v-model="formData.phoneNumber"
           required
-          @click="phoneInputIsInteracted = true"
+          @focus="phoneInputIsInteracted = true"
         />
         <small id="phoneNumberHint" :class="phoneInputHintColor">Example: +989901619642</small>
       </div>
