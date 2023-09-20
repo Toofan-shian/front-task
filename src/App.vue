@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="root-vuetify">
     <Form></Form>
     <Search></Search>
   </div>
@@ -27,4 +27,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
 </style>

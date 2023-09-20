@@ -40,11 +40,11 @@ describe("Form.vue", () => {
     const wrapper = mount(Form);
     const bankAccountInput = wrapper.find('#bankAccount');
     
-    await bankAccountInput.setValue('wrong');
-    expect(wrapper.vm.validateBankAccount('wrong')).toBe(false);
+    await bankAccountInput.setValue('12345678912');
+    expect(wrapper.vm.validateBankAccount('12345678912')).toBe(false);
     
-    await bankAccountInput.setValue('123456789999');
-    expect(wrapper.vm.validateBankAccount('123456789999')).toBe(true);
+    await bankAccountInput.setValue('123456789123');
+    expect(wrapper.vm.validateBankAccount('123456789123')).toBe(true);
   })
 
 

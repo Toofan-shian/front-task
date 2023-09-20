@@ -1,5 +1,5 @@
 <template>
-  <h3>Add Customer</h3>
+  <h3 style="width: 100%">Add Customer</h3>
 
   <div class="my-form">
     <form @submit.prevent="submitForm" id="form">
